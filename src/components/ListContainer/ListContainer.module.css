@@ -1,0 +1,41 @@
+/* --- NUEVO ESTILO: Contenedor para el scroll horizontal --- */
+.scrollContainer {
+  overflow-x: auto; 
+  padding-left: 2rem; 
+  padding-right: 2rem;
+  margin-left: -2rem; 
+  margin-right: -2rem; 
+  margin-bottom: 2rem; 
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.listGrid {
+  display: flex; 
+  flex-wrap: nowrap; 
+  gap: 1.5rem;
+  
+  
+  padding: 0; 
+ 
+  justify-content: flex-start; 
+  
+  max-width: none;
+  margin: 0; 
+}
+.scrollContainer::-webkit-scrollbar {
+  height: 10px; 
+  display: block; 
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: #0d0e1b; 
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: #555555; 
+  border-radius: 5px;
+  border: 2px solid #0d0e1b; 
+}
