@@ -4,7 +4,7 @@ import styles from './ListContainer.module.css';
 import { carrete } from '../../data/peliculas'; 
 
 
-const ListContainer = ({ selectedGenre }) => {
+const ListContainer = ({ selectedGenre, onBackgroundChange }) => {
   
 
   const filteredMovies = carrete.filter(pelicula => {
@@ -22,7 +22,10 @@ const ListContainer = ({ selectedGenre }) => {
       <div className={styles.listGrid}> 
       
         {filteredMovies.map(pelicula => (
-          <Card key={pelicula.id} movie={pelicula} /> 
+          <Card key={pelicula.id} 
+          movie={pelicula} 
+          onBackgroundChange={onBackgroundChange}
+          /> 
         ))}
       </div>
       

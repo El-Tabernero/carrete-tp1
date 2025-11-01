@@ -1,10 +1,21 @@
 import React from 'react';
 import styles from './Card.module.css//'
 
-const Card = ({ movie }) => {
+const Card = ({ movie, onBackgroundChange }) => {
+  const handleMouseEnter = () => {
+    onBackgroundChange(movie.portada169);
+  };
+  const handleMouseLeave = () => {
+    onBackgroundChange(null);
+  };
+
   
   return (
-    <div className={styles.card}>
+    <div 
+      className={styles.card}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      >
       <img src={movie.img} alt={`Poster de ${movie.title}`} className={styles.poster} />
       
       <div className={styles.info}>
