@@ -6,6 +6,7 @@
   margin-left: -2rem; 
   margin-right: -2rem; 
   margin-bottom: 2rem; 
+  padding-bottom: 50px;
 }
 
 .scrollContainer::-webkit-scrollbar {
@@ -15,11 +16,9 @@
 .listGrid {
   display: flex; 
   flex-wrap: nowrap; 
-  gap: 1.5rem;
-  
-  
-  padding: 0; 
- 
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+  padding: 20px 0; 
   justify-content: flex-start; 
   
   max-width: none;
@@ -38,4 +37,27 @@
   background-color: #555555; 
   border-radius: 5px;
   border: 2px solid #0d0e1b; 
+}
+
+@media (max-width: 768px) {
+    .listGrid {
+        /* En tabletas y móviles más anchos, mostramos 3 o 4 columnas */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .listGrid {
+        /* En móviles pequeños, cambiamos a 2 columnas fijas o un poco más grandes */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .listGrid {
+        /* Opcional: En móviles muy pequeños, podemos volver a una sola columna */
+        grid-template-columns: 1fr; 
+    }
 }

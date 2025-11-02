@@ -1,0 +1,16 @@
+/* Estilos para el contenedor de la capa de fondo */
+.appBackgroundLayer {
+    /* Aplicamos el filtro de desenfoque */
+    filter: blur(4px);
+}
+
+/* Estilos para la capa de contenido (para que el contenido no se desenfoque) */
+.appContentLayer {
+    /* Aseguramos que el contenido esté por encima del fondo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}

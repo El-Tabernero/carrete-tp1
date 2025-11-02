@@ -12,3 +12,34 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Estilos para el contenedor de la capa de fondo */
+.appBackgroundLayer {
+    /* Aplicamos el filtro de desenfoque */
+    filter: blur(4px);
+}
+
+/* Estilos para la capa de contenido (para que el contenido no se desenfoque) */
+.appContentLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    /* Aplicamos un padding más generoso para escritorio/tablet */
+    padding: 20px; 
+}
+
+/* --- Media Query para Celulares --- */
+@media (max-width: 600px) {
+    .appContentLayer {
+        /* Reducimos el padding en dispositivos móviles */
+        padding: 10px;
+    }
+    
+    .appBackgroundLayer {
+        /* Podríamos reducir el blur en móvil si es demasiado lento */
+        filter: blur(2px);
+    }
+}

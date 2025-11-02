@@ -1,8 +1,14 @@
+/* Ejemplo en Container.module.css */
+.title {
+    font-size: 2.5rem; /* Tamaño para escritorio */
+    margin-bottom: 20px;
+}
 .filterBar {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem 2rem;
   justify-content: center;
+  overflow-x:auto;
 }
 
 .filterButton {
@@ -25,4 +31,29 @@
   background-color: #ff4500;
   border-color: #ff4500;
   font-weight: bold;
+}
+@media (max-width: 600px) {
+    .filterBar {
+        /* Hacemos que el scroll sea más notorio en móvil */
+        -webkit-overflow-scrolling: touch;
+        /* Opcional: Ocultar la barra de scroll */
+        scrollbar-width: none;
+    }
+    .filterBar::-webkit-scrollbar {
+        display: none;
+    }
+    .genreButton {
+        padding: 6px 12px; /* Reducimos un poco el tamaño */
+        font-size: 0.85rem;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .title {
+        /* Reducir el tamaño del título en móvil */
+        font-size: 1.8rem; 
+        margin-top: 10px; /* Separación del header */
+    }
 }
