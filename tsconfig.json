@@ -1,7 +1,29 @@
 {
-  "files": [],
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    
+    /* Configuración de Bundler (Vite) */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx", // Habilita el manejo correcto de JSX
+    "allowSyntheticDefaultImports": true, // Permite 'import App from "./App.jsx"' incluso si App.jsx no es un módulo ES nativo.
+    
+    /* Linting y Strictness */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  // Incluye archivos .js y .jsx para que el compilador de TypeScript los escanee.
+  "include": ["src", "**/*.js", "**/*.jsx"], 
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    { "path": "./tsconfig1.node.json" }
   ]
 }
