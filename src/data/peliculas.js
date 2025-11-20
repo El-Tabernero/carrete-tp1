@@ -1,3 +1,5 @@
+//esto quedo de la version anterior, que era todo estático. 
+
 export const carrete = [
     {
         id: 1,

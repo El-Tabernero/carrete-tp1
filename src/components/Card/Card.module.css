@@ -57,6 +57,6 @@
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   margin-right: 0.4rem;
-  display: inline-block; /* Para que los tags estén uno al lado del otro */
-  margin-bottom: 0.4rem; /* Pequeño margen inferior para separar filas de tags */
+  display: inline-block; 
+  margin-bottom: 0.4rem;
 }

@@ -1,0 +1,53 @@
+/*
+ * 1. Estilos para el Fondo Fijo y que Cubra Todo el Contenido
+ * (Evita que el fondo se corte al hacer scroll)
+ */
+.appBackgroundLayer {
+    /* Posiciona el fondo de forma Fija en la ventana, 
+       para que no se mueva con el scroll */
+    position: fixed; 
+    
+    /* Asegura que cubra TODA la ventana visible */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+    /* Esto es importante si tienes un fondo con patrón o color sólido 
+       y quieres que se extienda, pero la propiedad 'backgroundAttachment: fixed' 
+       en 'appa.jsx' es la que hace el trabajo principal con la imagen. */
+       
+    z-index: -2; /* Lo ponemos bien abajo para que no cubra el contenido */
+    
+    /* Aplicar un filtro o un color oscuro si lo necesitas para que el texto sea legible */
+    /* filter: blur(3px) brightness(0.6); */
+}
+
+/*
+ * 2. Estilos para la Capa de Contenido
+ * (El contenido real de la página que sí debe scrollear)
+ */
+.appContentLayer {
+    /* Asegura que el contenido esté por encima del fondo */
+    position: relative; 
+    z-index: 1; 
+    
+    /* Opcional: para centrar el contenido y darle espacio */
+    padding: 0; 
+    margin: 0;
+    
+    /* Color de fondo del contenido para que el texto sea legible
+       (el color oscuro se combina con el fondo desenfocado) */
+    background-color: rgba(0, 0, 0, 0.5); 
+    min-height: 100vh; /* Para asegurar que el contenedor de contenido se extienda */
+}
+
+/* * 3. Estilos Globales (Importante para que el scroll funcione correctamente)
+ * (Normalmente irían en index.css, pero los ponemos aquí para referencia)
+ */
+:global(body), 
+:global(#root) {
+    /* Asegura que el cuerpo y el contenedor principal ocupen todo el ancho y alto */
+    width: 100%;
+    min-height: 100vh;
+}

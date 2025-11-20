@@ -1,35 +1,124 @@
+/* src/components/Header/hader.module.css */
+
 .header {
-  background-color: #0d0e1b; 
-  padding: 1rem 2rem;
-
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  margin-bottom: 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 30px;
+    background-color: #1a1a1a; /* Fondo oscuro */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.title {
-  margin: 0;
-  font-size: 1.8rem;
-  color: #a0a8ff; 
+.logo {
+    color: #FF4500; /* Naranja/Rojo de acento */
+    font-size: 1.8rem; /* Logo más grande */
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s;
 }
 
-.navList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex; 
-  gap: 1.5rem;
+.logo:hover {
+    transform: scale(1.05);
 }
 
-.navItem a {
-  text-decoration: none;
-  color: #f9f9f9;
-  font-size: 1rem;
-  transition: color 0.3s;
+
+/* ------------------------------------------- */
+/* Botón de Iniciar Sesión (Nuevo Estilo) */
+/* ------------------------------------------- */
+
+.authControls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.navItem a:hover {
-  color: #a0a8ff;
+.loginButton {
+    /* Estilo de botón principal y llamativo */
+    background-color: #FF4500; /* Fondo naranja principal */
+    color: white;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s;
+    /* Añadir un sutil efecto 3D/sombra */
+    box-shadow: 0 4px 10px rgba(255, 69, 0, 0.4); 
+}
+
+.loginButton:hover {
+    background-color: #e03c00; /* Tono más oscuro al pasar el ratón */
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.6); /* Sombra más grande al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño movimiento hacia arriba */
+}
+
+.loginButton:active {
+    transform: translateY(0); /* Vuelve a la posición normal al hacer clic */
+}
+
+
+/* ------------------------------------------- */
+/* Estilos de usuario logueado */
+/* ------------------------------------------- */
+
+.userName {
+    color: #FFD700; 
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #FF4500; 
+}
+
+.logoutButton {
+    background-color: #333;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.logoutButton:hover {
+    background-color: #444;
+}
+
+/* Media Queries para diseño responsive (simplificamos el header en móvil) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row; /* Mantenemos en fila, pero más compacto */
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .authControls {
+        gap: 8px;
+    }
+
+    .loginButton {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .userName {
+        display: none; /* Ocultamos el nombre completo para ahorrar espacio */
+    }
 }
