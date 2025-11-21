@@ -1,6 +1,6 @@
 import React from 'react';
 // Importamos los estilos del archivo renombrado hader.module.css
-import styles from './header.module.css'; 
+import styles from './Header.module.css'; 
 import { useAuth } from '../screens/AuthContext'; 
 
 const Header = ({ onNavigate }) => {
