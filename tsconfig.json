@@ -24,6 +24,6 @@
   // Incluye archivos .js y .jsx para que el compilador de TypeScript los escanee.
   "include": ["src", "**/*.js", "**/*.jsx"], 
   "references": [
-    { "path": "./tsconfig1.node.json" }
+    { "path": "./tsconfig.node.json" }
   ]
 }
