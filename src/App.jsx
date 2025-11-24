@@ -1,65 +1,20 @@
-import React, {useState} from 'react';
-import Header from "./components/Header/Header.jsx";
-import Container from './components/container/Container.jsx';
-import ListaContainer from './components/ListContainer/ListContainer.jsx';
-import FilterBar from './components/FilterBar/FilterBar.jsx';
-import styles from './App.module.css'; // ⬅️ IMPORTACIÓN DEL CSS MODULES
+import { BrowserRouter, Routes, Route } from "react-router";
+import { AuthProvider } from "./components/screens/AuthContext";
 
-// URL de fondo por defecto (Esta es la imagen que deseas mantener)
-const DEFAULT_BACKGROUND = 'url(https://media.licdn.com/dms/image/v2/D5612AQG34bnlCklpIQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1689310555077?e=2147483647&v=beta&t=gJV8vIymlVbqGxdzA8RS0ok3nvbcV8q5yKs6to2GxrE)'
+import Home from "./components/screens/home";
+import Login from "./components/screens/login";
 
-function App() { // ⬅️ 
-    const [selectedGenre, setSelectedGenre] = useState('TODOS');
-    const [backgroundImage, setBackgroundImage] = useState(DEFAULT_BACKGROUND);
-
-    const handleFilterChange = (genre) => {
-        setSelectedGenre(genre);
-    };
-
-    const handleBackgroundChange = (url) => {
-      setBackgroundImage(url ? `url("${url}")` : DEFAULT_BACKGROUND);
-    }
-
-    const backgroundStyle = {
-      backgroundImage: backgroundImage,
-      
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
-      minHeight: '100vh',
-      
-      transition: 'background-image 0.5s ease-in-out', 
-    }; 
-    
-    return (
-      <>
-        <div 
-          style={backgroundStyle} 
-          className={styles.appBackgroundLayer} 
-        />
-        
-        <div className={styles.appContentLayer}>
-          <Header />
-          
-          <Container title="Filtrar por Género">
-            <FilterBar 
-              onFilterChange={handleFilterChange} 
-              activeGenre={selectedGenre} 
-            />
-          </Container>
-          
-          <Container title={`Películas Destacadas (${selectedGenre})`}>
-            <ListaContainer 
-              selectedGenre={selectedGenre} 
-              onBackgroundChange={handleBackgroundChange}
-            /> 
-          </Container>
-          
-          <Container title="Próximamente">
-          </Container>
-        </div>
-      </>
-    );
+function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App;

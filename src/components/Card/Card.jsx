@@ -1,98 +1,3 @@
-/*
-import React from 'react';
-import styles from './Card.module.css'; 
-import { useAuth } from '../screens/AuthContext.jsx'; 
-
-const Card = ({ movie, onBackgroundChange }) => {
-    const { isLoggedIn } = useAuth(); 
-
-    // 1. MAPEO DE CAMPOS (Específico para apirequest.in / Avatar JSON)
-    const mappedTitle = movie.title || 'Sin Título';
-    const mappedYear = movie.year || '';
-    const convertToHttps = (url) => {
-      if (!url) return null;
-      if (url.startsWith("https")) return url;
-      return `https://images.weserv.nl/?url=${url.replace("http://", "")}`;
-    };
-
-    const imageUrl = (movie.Poster && movie.Poster !== "N/A")
-      ? convertToHttps(movie.Poster)
-      : "https://placehold.co/500x750/333/FFF?text=Sin+Poster";
-    
-    // Imagen Horizontal (Fondo) - Usamos la segunda imagen del array 'Images' si existe
-    const backdropUrl = (movie.Images && movie.Images.length > 1)
-      ? convertToHttps(movie.Images[1])
-      : convertToHttps(movie.Images ? movie.Images[0] : imageUrl);
-
-
-    // Géneros (La API devuelve un string "Action, Adventure", lo convertimos a array)
-    const genresList = movie.genre ? movie.genre.split(', ') : ['Varios'];
-    
-    const handlePlayClick = () => {
-        if (isLoggedIn) {
-            alert(`✅ Reproduciendo: ${mappedTitle}`);
-        } else {
-            alert("🛑 Aviso: Debes iniciar sesión.");
-        }
-    };
-
-    const handleMouseEnter = () => {
-        // ⬅️ CORRECCIÓN DE SEGURIDAD:
-        // Verificamos si onBackgroundChange existe y es una función antes de llamarla.
-        if (typeof onBackgroundChange === 'function') {
-            onBackgroundChange(backdropUrl); 
-        }
-    };
-
-    const handleMouseLeave = () => {
-        // ⬅️ CORRECCIÓN DE SEGURIDAD:
-        if (typeof onBackgroundChange === 'function') {
-            onBackgroundChange(null);
-        }
-    };
-    
-    return (
-        <div 
-            className={styles.card}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            <div className={styles.imageContainer}>
-                <img 
-                    src={imageUrl} 
-                    alt={mappedTitle} 
-                    className={styles.poster}
-                    onError={(e) => { 
-                        e.target.onerror = null; 
-                        e.target.src = 'https://placehold.co/500x750/333/FFF?text=Sin+Imagen';
-                    }}
-                />
-                
-                <button 
-                    className={styles.playButton}
-                    onClick={handlePlayClick}
-                    title={isLoggedIn ? "Reproducir" : "Iniciar Sesión"}
-                >
-                    <span role="img" aria-label="Play">▶️</span>
-                </button>
-            </div>
-            
-            <div className={styles.info}>
-                <h3 className={styles.title}>{mappedTitle}</h3>
-                <p className={styles.year}>{mappedYear}</p>
-                
-                <div className={styles.genreTags}>
-                    {genresList.slice(0, 3).map((g, index) => (
-                        <span key={index} className={styles.tag}>{g}</span>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
-export default Card;
-
-*/
 import React from 'react';
 import styles from './Card.module.css'; 
 import { useAuth } from '../screens/AuthContext.jsx'; 
@@ -138,11 +43,13 @@ const Card = ({ movie, onBackgroundChange }) => {
     const genresList = movie.genre ? movie.genre.split(', ') : ['Varios'];
     
     const handlePlayClick = () => {
-        // CORRECCIÓN: Usamos console.log() en lugar de alert()
+        // usar alert y console log pq sino NOSE cuando utiliza 
         if (isLoggedIn) {
             console.log(`✅ Reproduciendo: ${mappedTitle}`);
+
         } else {
             console.log("🛑 Aviso: Debes iniciar sesión.");
+            alert("🛑 Aviso: Debes iniciar sesión.");
         }
     };
 
