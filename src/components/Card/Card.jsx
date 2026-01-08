@@ -16,13 +16,11 @@ const secureUrl = (url) => {
 const Card = ({ movie, onBackgroundChange }) => {
     const { isLoggedIn } = useAuth(); 
 
-    // 1. MAPEO DE CAMPOS
     const mappedTitle = movie.title || 'Sin Título';
     const mappedYear = movie.year || '';
     
-    // Imagen Vertical (Poster)
-    const rawImageUrl = (movie.Poster && movie.Poster !== 'N/A') 
-                     ? movie.Poster 
+    const rawImageUrl = (movie.poster && movie.poster !== 'N/A') 
+                     ? movie.poster 
                      : 'https://placehold.co/500x750/333/FFF?text=Sin+Poster';
     
     // Aplicamos la función de seguridad a la URL del poster
@@ -30,9 +28,8 @@ const Card = ({ movie, onBackgroundChange }) => {
 
 
     // Imagen Horizontal (Fondo) - Usamos la segunda imagen del array 'Images' si existe
-    const rawBackdropUrl = (movie.Images && movie.Images.length > 1) 
-                        ? movie.Images[1] 
-                        : (movie.Images ? movie.Images[0] : rawImageUrl);
+    const rawBackdropUrl = movie.backimg || movie.poster || rawImageUrl;
+
     
     // Aplicamos la función de seguridad a la URL del fondo.
     // Si la URL del fondo falla, se pasará null a handleBackgroundChange y se usará el fondo por defecto.

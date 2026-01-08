@@ -20,27 +20,3 @@ export function useFetchData() {
 
   return { movies, isLoading, error };
 }
-
-/**
-import { useQuery } from '@tanstack/react-query';
-import { fetchData } from '../utils/api'; // Importamos la función fetch
-
-// RENOMBRADO: El hook se llama useFetchData (coincidiendo con el archivo)
-export function useFetchData() {
-  // La clave 'imdb-movies' asegura el caching.
-  const { 
-    data: movies, 
-    isLoading, 
-    error 
-  } = useQuery({
-    queryKey: ['movies', 'imdb-list'],
-    // Llama a fetchData que ahora usa el endpoint de search
-    queryFn: () => fetchData(), 
-    staleTime: 10 * 60 * 1000, // 10 minutos
-    retry: 3, 
-  });
-
-  // movies será la respuesta JSON completa de la API. 
-  return { movies, isLoading, error };
-}
-*/

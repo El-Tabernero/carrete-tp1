@@ -9,6 +9,56 @@ const ListaContainer = ({ selectedGenre, onBackgroundChange }) => {
   if (isLoading) return <div className={styles.loadingState}>Cargando...</div>;
   if (error) return <div className={styles.errorState}>Error: {error.message}</div>;
 
+  // --- NUEVO: filtrado universal compatible con la API ---
+  const filteredMovies = movies.filter(movie => {
+    if (selectedGenre === 'TODOS') return true;
+
+    if (!movie.genre) return false;
+
+    // API → "Action, Drama"
+    const genres = movie.genre
+      .split(',')
+      .map(g => g.trim().toUpperCase());
+
+    // selectedGenre → "DRAMA" o "ACCION"
+    return genres.includes(selectedGenre);
+  });
+
+  return (
+    <div className={styles.scrollContainer}> 
+      <div className={styles.listGrid}> 
+        {filteredMovies.map((movie, index) => (
+          <Card 
+            key={movie.imdbId || index} 
+            movie={movie} 
+            onBackgroundChange={onBackgroundChange} 
+          /> 
+        ))}
+      </div>
+      
+      {filteredMovies.length === 0 && (
+        <div className={styles.noResults}>
+          <p>No se encontraron películas de <strong>{selectedGenre}</strong>.</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ListaContainer;
+
+/*
+import React from 'react';
+import Card from '../Card/Card'; 
+import styles from './ListContainer.module.css';
+import { useFetchData } from '../Hooks/useFetchData'; 
+
+const ListaContainer = ({ selectedGenre, onBackgroundChange }) => { 
+  const { movies, isLoading, error } = useFetchData();
+
+  if (isLoading) return <div className={styles.loadingState}>Cargando...</div>;
+  if (error) return <div className={styles.errorState}>Error: {error.message}</div>;
+
   // Filtrado de Películas
   const filteredMovies = movies.filter(movie => {
     if (selectedGenre === 'TODOS') return true;
@@ -59,63 +109,4 @@ const ListaContainer = ({ selectedGenre, onBackgroundChange }) => {
 };
 
 export default ListaContainer;
-
-
-
-/*
-import React from 'react';
-import Card from '../Card/Card';
-import styles from './ListContainer.module.css';
-import { useFetchData } from '../Hooks/useFetchData'; // ⬅️ USAMOS EL HOOK DE REACT QUERY
-
-const ListContainer = ({ selectedGenre, onBackgroundChange }) => { 
-  const { movies, isLoading, error } = useFetchData();
-
-  if (isLoading) {
-    return <div className={styles.loadingState}>Cargando películas...</div>;
-  }
-  if (error) {
-    return <div className={styles.errorState}>Error al cargar los datos: {error.message}. Verifica el servicio de la API.</div>;
-  }
-
- 
-  const movieList = Array.isArray(movies) ? movies : (movies?.results || []); 
-
-
-  const filteredMovies = movieList.filter(pelicula => {
-
-    if (selectedGenre === 'TODOS') {
-      return true; 
-    }
-    
-    const generosAPI = pelicula.genre_ids || []; 
-    if (!generosAPI.includes(selectedGenre)) { 
-        return false;
-    }
-    return true;
-  });
-
-  if (filteredMovies.length === 0) {
-    return (
-      <div className={styles.noResults}>
-        No se encontraron películas para el género: {selectedGenre}.
-      </div>
-    );
-  }
-
-  return (
-    <div className={styles.scrollContainer}> 
-      <div className={styles.listGrid}> 
-      
-        {filteredMovies.map((pelicula, index) => (
-          <Card 
-            key={index} // Usamos index como fallback si la API no tiene 'id'
-            movie={pelicula} 
-            onBackgroundChange={onBackgroundChange} // ⬅️ ¡ESTO RESUELVE EL ERROR!
-          /> 
-        ))}
-      </div>
-    </div>
-  );
-};
-export default ListContainer; */
+*/

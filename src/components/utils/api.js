@@ -1,7 +1,6 @@
-const CUSTOM_JSON_URL = "https://www.apirequest.in/movie/api"; 
+const CUSTOM_JSON_URL = "https://6938377b4618a71d77cf67b1.mockapi.io/carrete/v1/movies";
 
 export async function fetchData() {
-  
   console.log("Cargando datos desde:", CUSTOM_JSON_URL);
 
   try {
@@ -12,16 +11,13 @@ export async function fetchData() {
     }
 
     const data = await response.json();
-    return data; 
-
+    console.log("Películas obtenidas:", data);
+    return data;
   } catch (error) {
-    console.error("Error al obtener el JSON:", error);
-    throw new Error(`Fallo al cargar la lista de películas. Detalle: ${error.message}`);
+    console.error("Error al obtener las películas:", error);
+    throw new Error(`Fallo al cargar las películas. Detalle: ${error.message}`);
   }
 }
-export const IMAGE_BASE_URL = ''; 
-export const BACKDROP_BASE_URL = '';
-
 //acá lo que es para Users:
 
 export const BASE_URL_USERS = "GET https://api.escuelajs.co/api/v1";
