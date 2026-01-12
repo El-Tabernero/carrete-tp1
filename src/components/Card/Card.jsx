@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Card.module.css'; 
 import { useAuth } from '../screens/AuthContext.jsx'; 
+import { useNavigate } from 'react-router-dom';
 
 
 const secureUrl = (url) => {
@@ -15,6 +16,7 @@ const secureUrl = (url) => {
 
 const Card = ({ movie, onBackgroundChange }) => {
     const { isLoggedIn } = useAuth(); 
+    const navigate = useNavigate();
 
     const mappedTitle = movie.title || 'Sin Título';
     const mappedYear = movie.year || '';
@@ -42,7 +44,8 @@ const Card = ({ movie, onBackgroundChange }) => {
     const handlePlayClick = () => {
         // usar alert y console log pq sino NOSE cuando utiliza 
         if (isLoggedIn) {
-            console.log(`✅ Reproduciendo: ${mappedTitle}`);
+            console.log(`✅ Abriendo detalles de: ${mappedTitle}`);
+            navigate(`/movie/${movie.id}`);
 
         } else {
             console.log("🛑 Aviso: Debes iniciar sesión.");

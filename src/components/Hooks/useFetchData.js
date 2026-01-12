@@ -3,7 +3,6 @@ import { fetchData } from '../utils/api';
 
 // Renombramos la función exportada a 'useFetch'
 export function useFetchData() {
-  
   const { 
     data: moviesData, 
     isLoading, 
@@ -18,5 +17,8 @@ export function useFetchData() {
   // Aseguramos que sea un array
   const movies = Array.isArray(moviesData) ? moviesData : [];
 
+  
+
   return { movies, isLoading, error };
 }
+

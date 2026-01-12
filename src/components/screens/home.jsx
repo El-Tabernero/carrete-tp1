@@ -39,7 +39,6 @@ function Home() { // ⬅️
         />
         
         <div className={styles.appContentLayer}>
-          <Header />
           
           <Container title="Filtrar por Género">
             <FilterBar 
