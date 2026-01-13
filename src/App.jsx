@@ -17,7 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/movie/:id" element={<MovieDetail/>}/>
         </Routes>
-      </AuthProvider>||
+      </AuthProvider>
     </BrowserRouter>
   );
 }

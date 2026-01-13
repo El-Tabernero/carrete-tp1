@@ -35,6 +35,12 @@
   width: 100%;
   height: 420px;
   object-fit: cover;
+  border-radius: 25px;
+  transition: 0.5s;
+}
+.backdrop:hover{
+    transform: scale(1.02);
+    transition: 0.5s;
 }
 
 .content {

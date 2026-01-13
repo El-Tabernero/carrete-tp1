@@ -17,15 +17,12 @@ export async function fetchData() {
 
 // 👇 NUEVO
 export async function fetchCommentsByMovie(movieId) {
-  console.log("💬 Cargando comentarios para movie:", movieId);
+  const response = await fetch(COMMENTS_URL);
+  const data = await response.json();
 
-  const response = await fetch(`${COMMENTS_URL}?movieId=${movieId}`);
-
-  if (!response.ok) {
-    throw new Error("Error al cargar comentarios");
-  }
-
-  return response.json();
+  return data.filter(
+    comment => String(comment.movieId) === String(movieId)
+  );
 }
 //acá lo que es para Users:
 

@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useFetchData } from "../Hooks/useFetchData";
 import styles from "./MovieDetail.module.css";
+import Comments from "../Comments/Comments";
 
 
 const MovieDetail =() => {
@@ -35,7 +36,9 @@ const MovieDetail =() => {
                     <div className={styles.tag}>
                     ⏱ {movie.duration} min
                      </div>
+                    
                 </div>
+                <Comments movieId={movie.id}/>
 
             </div>
         </div>
