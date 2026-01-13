@@ -1,5 +1,5 @@
 import styles from "./Comments.module.css";
-import { useComments } from "../hooks/useComments";
+import { useComments } from "../Hooks/useComments";
 
 const formatDate = (timestamp) => {
   const date = new Date(timestamp * 1000);
