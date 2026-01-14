@@ -80,3 +80,12 @@
 .apiList a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: 45vh auto;
+    height: auto;
+    min-height: calc(100vh - 72px);
+  }
+}

@@ -1,28 +1,12 @@
-/*
- * 1. Estilos para el Fondo Fijo y que Cubra Todo el Contenido
- * (Evita que el fondo se corte al hacer scroll)
- */
+
 .appBackgroundLayer {
-    /* Posiciona el fondo de forma Fija en la ventana, 
-       para que no se mueva con el scroll */
-    position: fixed; 
-    
-    /* Asegura que cubra TODA la ventana visible */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-       
-    z-index: -2; /* Lo ponemos bien abajo para que no cubra el contenido */
-    
-    /* Aplicar un filtro o un color oscuro si lo necesitas para que el texto sea legible */
-    /* filter: blur(3px) brightness(0.6); */
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
 }
 
-/*
- * 2. Estilos para la Capa de Contenido
- * (El contenido real de la página que sí debe scrollear)
- */
 .appContentLayer {
     position: relative; 
     z-index: 1; 
@@ -34,9 +18,3 @@
     min-height: 100vh; /* Para asegurar que el contenedor de contenido se extienda */
 }
 
-:global(html),
-:global(body),
-:global(#root) {
-  height: 100%;
-  margin: 0;
-}

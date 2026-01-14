@@ -69,14 +69,33 @@
 @media (max-width: 900px) {
   .page {
     grid-template-columns: 1fr;
-    height: auto;
+    height: calc(100vh - 72px);
+    overflow: hidden;
   }
 
   .left {
-    height: 45vh;
+    max-height: 2px;
+    background-position: top center;
   }
 
   .right {
-    padding: 2.5rem 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.2rem 1rem;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.4;
   }
 }
