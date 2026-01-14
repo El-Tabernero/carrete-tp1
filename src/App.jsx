@@ -5,7 +5,7 @@ import Home from "./components/screens/home";
 import Login from "./components/screens/login";
 import MovieDetail from "./components/MovieDetail/MovieDetail";
 import Header from "./components/Header/Header";
-import About from "./components/screens/about/about";
+import About from "./components/screens/about/About";
 import Contact from "./components/screens/contact/contact";
 
 function App() {
