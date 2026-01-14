@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Header.module.css";
+import NavButton from "../NavButton/NavButton";
 import { useAuth } from "../screens/AuthContext";
 import { useNavigate } from "react-router";
 
@@ -8,10 +9,24 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
+
     <header className={styles.header}>
+
       <div className={styles.logo} onClick={() => navigate("/")}>
         🎬 EL Carrete
       </div>
+      {/* divs quienes somos, y como funciona */}
+
+      <div className={styles.right}>
+      <nav className={styles.link}>
+        <NavButton variant="link" onClick={() => navigate("/contact")}>
+          Contacto 📞
+        </NavButton>
+        <NavButton variant="link" onClick={() => navigate("/About")}>
+          Acerca de la página 🗝️
+        </NavButton>
+
+      </nav>
 
       <div className={styles.authControls}>
         {isLoggedIn ? (
@@ -39,6 +54,7 @@ const Header = () => {
             Iniciar Sesión
           </button>
         )}
+      </div>
       </div>
     </header>
   );

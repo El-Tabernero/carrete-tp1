@@ -1,12 +1,15 @@
-
+.h1{
+  padding-top: 11px;
+}
 .container {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   
   background: linear-gradient(90deg,rgb(19, 18, 18) 0%, rgb(39, 22, 22)
    50%, rgb(34, 30, 24) 100%);
   border-radius: 12px;
   padding-left: 4px;
   padding-right: 4px;
+  padding-bottom: 4px;
 }
 
 .commentCard {
@@ -23,7 +26,7 @@
 }
 
 .text {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   color: #ddd;
 }
 

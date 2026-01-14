@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 const secureUrl = (url) => {
     if (!url || url === 'N/A') return null;
     
-    // Si la URL ya es HTTPS, la devuelve
     if (url.startsWith("https")) return url;
  
     const secureProxyUrl = `https://images.weserv.nl/?url=${encodeURIComponent(url.replace("http://", ""))}`;
@@ -25,20 +24,11 @@ const Card = ({ movie, onBackgroundChange }) => {
                      ? movie.poster 
                      : 'https://placehold.co/500x750/333/FFF?text=Sin+Poster';
     
-    // Aplicamos la función de seguridad a la URL del poster
     const imageUrl = secureUrl(rawImageUrl) || 'https://placehold.co/500x750/333/FFF?text=Sin+Poster';
-
-
-    // Imagen Horizontal (Fondo) - Usamos la segunda imagen del array 'Images' si existe
     const rawBackdropUrl = movie.backimg || movie.poster || rawImageUrl;
-
-    
-    // Aplicamos la función de seguridad a la URL del fondo.
-    // Si la URL del fondo falla, se pasará null a handleBackgroundChange y se usará el fondo por defecto.
     const backdropUrl = secureUrl(rawBackdropUrl);
 
 
-    // Géneros (La API devuelve un string "Action, Adventure", lo convertimos a array)
     const genresList = movie.genre ? movie.genre.split(', ') : ['Varios'];
     
     const handlePlayClick = () => {
@@ -55,7 +45,6 @@ const Card = ({ movie, onBackgroundChange }) => {
 
     const handleMouseEnter = () => {
         if (typeof onBackgroundChange === 'function') {
-            // Pasamos la URL del fondo (o null si falló la conversión segura)
             onBackgroundChange(backdropUrl); 
         }
     };
@@ -78,7 +67,6 @@ const Card = ({ movie, onBackgroundChange }) => {
                     src={imageUrl} 
                     alt={mappedTitle} 
                     className={styles.poster}
-                    // Fallback si la imagen (incluso con proxy) falla
                     onError={(e) => { 
                         e.target.onerror = null; 
                         e.target.src = 'https://placehold.co/500x750/333/FFF?text=Sin+Imagen';
@@ -90,7 +78,7 @@ const Card = ({ movie, onBackgroundChange }) => {
                     onClick={handlePlayClick}
                     title={isLoggedIn ? "Reproducir" : "Iniciar Sesión"}
                 >
-                    <span role="img" aria-label="Play">▶️</span>
+                    <span role="img" aria-label="Play">▶</span>
                 </button>
             </div>
             

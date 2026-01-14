@@ -1,18 +1,19 @@
-/* src/components/Header/hader.module.css */
 
 .header {
-    display: flex; 
     justify-content: space-between; 
+    display: flex;
     align-items: center; 
     padding: 15px 30px;
     background-color: #1a1a1a; /* Fondo oscuro */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 50;
 }
 
+
 .logo {
+    flex: 1;
     color: #FF4500; /* Naranja/Rojo de acento */
     font-size: 1.8rem; /* Logo más grande */
     font-weight: bold;
@@ -27,11 +28,17 @@
 .logo:hover {
     transform: scale(1.05);
 }
+.right {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* espacio entre links y login */
+}
+.link{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-
-/* ------------------------------------------- */
-/* Botón de Iniciar Sesión (Nuevo Estilo) */
-/* ------------------------------------------- */
 
 .authControls {
     display: flex;
@@ -40,34 +47,28 @@
 }
 
 .loginButton {
-    /* Estilo de botón principal y llamativo */
-    background-color: #FF4500; /* Fondo naranja principal */
+    background-color: #FF4500; 
     color: white;
     font-weight: 700;
     padding: 10px 20px;
     border: none;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 8px; 
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s;
-    /* Añadir un sutil efecto 3D/sombra */
+    
     box-shadow: 0 4px 10px rgba(255, 69, 0, 0.4); 
 }
 
 .loginButton:hover {
-    background-color: #e03c00; /* Tono más oscuro al pasar el ratón */
-    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.6); /* Sombra más grande al pasar el ratón */
-    transform: translateY(-2px); /* Pequeño movimiento hacia arriba */
+    background-color: #e03c00; 
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.6); 
+    transform: translateY(-2px); 
 }
 
 .loginButton:active {
-    transform: translateY(0); /* Vuelve a la posición normal al hacer clic */
+    transform: translateY(0); 
 }
-
-
-/* ------------------------------------------- */
-/* Estilos de usuario logueado */
-/* ------------------------------------------- */
 
 .userName {
     color: #FFD700; 

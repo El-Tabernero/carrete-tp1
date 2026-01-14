@@ -1,0 +1,28 @@
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+  background: #2c2f36;
+  color: white;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  background: #3a3f47;
+}
+
+/* variantes */
+.login {
+  background: linear-gradient(135deg, #ff4500, #ff7a18);
+}
+
+.logout {
+  background: #b3261e;
+}
+
+.link {
+  background: transparent;
+}
